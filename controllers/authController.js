@@ -20,13 +20,13 @@ exports.createUser = async (req, res) => {
     await nuevoUsuario.save();
 
     res.status(201).json({
-      mensaje: 'user created successfully',
+      mensaje: 'Usuario creado exitosamente en Firebase y MongoDB',
       idUsuarioMongo: nuevoUsuario._id,
       idUsuarioFirebase: userRecord.uid
     });
 
   } catch (error) {
-    console.error('usear has not been created:', error.message);
+    console.error('Error al crear el usuario:', error.message);
     res.status(500).json({ error: error.message });
   }
 };
