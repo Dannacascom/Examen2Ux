@@ -5,6 +5,11 @@ const axios = require('axios');
 
 exports.createUser = async (req, res) => {
   const { email, password, nombre, apellido } = req.body;
+   if (!email || !password || !nombre || !apellido) {
+    return res.status(400).json({
+      Mensaje: 'Error al hacer al crear usuario',
+    });
+  }
 
   try {
       const userRecord = await admin.auth().createUser({
@@ -28,7 +33,7 @@ exports.createUser = async (req, res) => {
 
   } catch (error) {
     console.error('Error al crear el usuario:', error.message);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message || error.toString() }); 
   }
 };
 
