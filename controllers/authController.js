@@ -67,3 +67,8 @@ exports.logIn = async (req, res) => {
     res.status(401).json({ error: 'Credenciales inválidas o usuario no registrado' });
   }
 };
+
+exports.logOut = (req, res) => {
+  res.status(200).json({ mensaje: "Que tengas un lindo dia, hasta luego" });
+};
+
